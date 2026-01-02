@@ -1,0 +1,343 @@
+/* ==========================================================
+   ESTILOS PRINCIPALES ÉTICA SOCIAL – VERFRUT / RAPEL 2026
+   ========================================================== */
+:root {
+  --rapel: #0b2b5b;
+  --verfrut: #287a4c;
+  --cap: #fff176;
+  --chk: #66bb6a;
+  --ref: #d7a77a;
+  --fondo: #f6f8fb;
+}
+
+/* ====== ESTRUCTURA GLOBAL ====== */
+* { box-sizing: border-box; font-family: Tahoma, system-ui; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(90deg, var(--rapel), var(--verfrut));
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+footer {
+  background: var(--rapel);
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px 0;
+  margin-top: auto;
+}
+
+section { padding: 16px; }
+.hidden { display: none; }
+
+/* ====== PANEL Y CONTROLES ====== */
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  margin-bottom: 16px;
+}
+
+label { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+input, select, button {
+  padding: 10px;
+  border: 1px solid #d0d4da;
+  border-radius: 8px;
+  font-size: 15px;
+}
+button { cursor: pointer; font-weight: 600; }
+
+/* ====== BOTONES ====== */
+.btn-principal {
+  background: var(--rapel);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.btn-principal:hover { background: #1a4b88; }
+
+.btn-secundario {
+  background: var(--verfrut);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 500;
+  transition: background .2s;
+}
+.btn-secundario:hover { background: #2fa45b; }
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.botones-superior { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ====== LEYENDA ====== */
+#leyenda {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  justify-content: center;
+}
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.tag.cap { background: var(--cap); }
+.tag.chk { background: var(--chk); color: #fff; }
+.tag.ref { background: var(--ref); }
+
+/* ====== CALENDARIO ====== */
+#calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.celda {
+  background: #fff;
+  border: 1px solid #e2e6ec;
+  border-radius: 10px;
+  min-height: 80px;
+  padding: 6px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  font-size: 13px;
+}
+.celda .dia {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 12px;
+  opacity: .6;
+}
+.item {
+  display: block;
+  margin-top: 18px;
+  padding: 3px 4px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.item.cap { background: var(--cap); }
+.item.chk { background: var(--chk); color: #fff; }
+.item.ref { background: var(--ref); }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.hint { opacity: .7; font-size: 12px; text-align: center; }
+
+/* =======================================================
+   DASHBOARD PRINCIPAL
+   ======================================================= */
+.tabla-avance {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.tabla-avance th, .tabla-avance td {
+  border: 1px solid #cdd3db;
+  padding: 6px;
+  text-align: center;
+}
+.tabla-avance th {
+  background: var(--verfrut);
+  color: #fff;
+}
+.tabla-avance tr:nth-child(even) { background: #f2f5f7; }
+.tabla-avance td:nth-child(8) { font-weight: bold; }
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* ====== MODAL DEL DASHBOARD ====== */
+#dashboardModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+#dashboardModal:not(.hidden) {
+  display: flex;
+  opacity: 1;
+}
+
+#contenidoDashboard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  color: #222;
+  font-family: "Tahoma", sans-serif;
+}
+
+/* ====== ENCABEZADO DEL DASHBOARD ====== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.dashboard-header h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--rapel);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.acciones-superior { display: flex; gap: 10px; }
+
+/* ====== FILTRO MENSUAL ====== */
+.filtro-mes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0 20px;
+}
+.filtro-mes input {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ====== DETALLE MODAL (EDITABLE) ====== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal.hidden { display: none; }
+
+.panel-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 85%;
+  max-width: 1000px;
+  max-height: 85%;
+  overflow-y: auto;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  color: #222;
+}
+.panel-modal h3 { text-align: center; margin-top: 0; }
+
+.panel-modal button {
+  background: var(--rapel);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: block;
+  margin: 12px auto 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.panel-modal button:hover { opacity: .9; }
+
+.tabla-detalle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.tabla-detalle th, .tabla-detalle td {
+  border: 1px solid #cfd4db;
+  padding: 6px;
+  text-align: center;
+}
+.tabla-detalle th {
+  background: var(--verfrut);
+  color: #fff;
+}
+.tabla-detalle input, .tabla-detalle select {
+  width: 100%;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f8f9fa;
+}
+.link { cursor: pointer; text-decoration: underline; color: var(--rapel); }
+
+/* ====== PROGRESO INDIVIDUAL ====== */
+.progreso-box { margin: 12px auto; text-align: center; }
+.progreso-texto { font-weight: 600; margin-bottom: 6px; }
+.progreso-barra {
+  width: 90%;
+  height: 16px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.progreso-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width .8s ease;
+}
+.estado-detalle {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+/* ====== BOTONES SUPERIORES UNIVERSALES ====== */
+.btn-secundario {
+  background-color: #133b73;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-secundario:hover { background-color: #1b4e9a; }
+
+/* ====== EFECTO DE SALIDA SUAVE (FADE-OUT) ====== */
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
+}

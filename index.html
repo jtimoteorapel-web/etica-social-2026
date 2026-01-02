@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Ética Social – Verfrut / Rapel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <meta name="theme-color" content="#0b2b5b">
+</head>
+<body>
+
+<header>
+  <h1>Ética Social 2026</h1>
+  <div id="userBox"></div>
+</header>
+
+<!-- LOGIN -->
+<section id="login" class="panel">
+  <h2>Inicio de Sesión</h2>
+  <label>Usuario <input id="u"></label>
+  <label>Contraseña <input id="p" type="password"></label>
+  <button id="btnLogin" class="btn-principal">Ingresar</button>
+</section>
+
+<!-- APP -->
+<section id="app" class="hidden">
+
+  <div class="toolbar">
+    <label>Empresa <select id="empresa"></select></label>
+    <label>Mes <input type="month" id="mes" value="2026-02"></label>
+    <div class="botones-superior">
+      <button id="btnCarga" class="btn-secundario">📅 Cargar</button>
+      <button id="btnCSV" class="btn-secundario">📤 Exportar</button>
+    </div>
+  </div>
+
+  <div id="leyenda">
+    <span class="tag cap">CAP</span>
+    <span class="tag chk">CHK</span>
+    <span class="tag ref">REF</span>
+  </div>
+
+  <div id="calendario"></div>
+
+  <details class="panel">
+    <summary>➕ Registrar / Editar sesión</summary>
+    <div class="form-grid">
+      <label>Fecha <input type="date" id="f_fecha"></label>
+      <label>Sector <select id="f_sector"></select></label>
+      <label>Actividad
+        <select id="f_actividad">
+          <option value="CAP">CAP</option>
+          <option value="CHK">CHK</option>
+          <option value="REF">REF</option>
+        </select>
+      </label>
+      <label>Cumplimiento
+        <select id="f_cump">
+          <option value="PENDIENTE">Pendiente</option>
+          <option value="CUMPLIDO">Cumplido</option>
+          <option value="NO_CUMPLIDO">No cumplido</option>
+        </select>
+      </label>
+      <label>Cant. capacitados <input type="number" id="f_cant"></label>
+      <label>Área <input id="f_area"></label>
+      <label>Observaciones <input id="f_obs"></label>
+    </div>
+    <button id="f_guardar" class="btn-principal">💾 Guardar Sesión</button>
+  </details>
+
+  <!-- BOTÓN DASHBOARD -->
+  <div class="panel">
+    <button class="btn-secundario" onclick="generarDashboard()">📊 Ver Avance General</button>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Gestión Humana – Verfrut / Rapel</p>
+</footer>
+
+<!-- MODAL ÚNICO DEL DASHBOARD -->
+<div id="dashboardModal" class="hidden">
+  <div id="contenidoDashboard"></div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>
